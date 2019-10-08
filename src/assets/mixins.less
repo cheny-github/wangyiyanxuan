@@ -1,0 +1,42 @@
+.box(){
+    border: 1px solid #000;
+}
+//10px 分割符
+.seprator(){
+    &::after{
+        content: '';
+        display: block;
+        width: 100vw;
+        height: 10px;
+        background-color: #eee;
+        position: relative;
+        top: 10px;
+        // margin-bottom: 10px;
+    }
+}
+// 优惠券
+.youhuiquan(@width){
+    font-size: 10px;
+    color: #b4282d;
+    text-align: center;
+    line-height: 15px;
+    display: inline-block;
+    width: @width;
+    background: url(http://yanxuan.nosdn.127.net/ed89ab4f5ad97ad23257f635a9c2fdbb.png),
+    url(http://yanxuan.nosdn.127.net/344655c651a5cf17b7d6096b69be7aba.png),
+    url(//yanxuan.nosdn.127.net/6dcff693a2be08725c1313c7e2390840.png);
+    height: 15px;
+    background-repeat: no-repeat,no-repeat,repeat-x;
+    background-size: auto 100%,auto 100%,
+    99% 99%
+    ;
+    background-position: 1%, 99%,center;
+    padding:0 4px;
+}
+.hint(){
+    font-size: 10px;
+    border: 1px solid #ce2424;
+    border-radius: 8px;
+    padding: 2px 4px;
+    color: #ce2424;
+}
