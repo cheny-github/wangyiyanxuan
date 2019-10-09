@@ -63,7 +63,7 @@ import XSG from './HomeXSG';
 import XPSF from './HomeXPSF';
 import CZZQ from './HomeCZZQ';
 import JRHD from './HomeJRHD';
-import {reqHomeData} from '../../api/index.js'
+import store from '@/store';
 export default {
   components:{
     Header,
@@ -79,7 +79,7 @@ export default {
     JRHD
   },
   mounted(){
-
+    store.dispatch('fetchHomeData')
   }
 
 };

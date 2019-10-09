@@ -3,59 +3,14 @@
         <Container1 :title="'新品首发'" :isShowMore="true">
             <div class="xinpingshoufa-wrapper">
                 <ul class="list">
-                    <li class="item">
+                    <li class="item" v-for="(item, index) in itemList" :key="index">
                             <div class="img">
-                                    <img src="https://yanxuan-item.nosdn.127.net/e277aa8352b720eab2f6afae5dcabcc1.png?imageView&amp;quality=65&amp;thumbnail=330x330"/>
+                                    <img :src="item.listPicUrl"/>
                             </div>
                             <div class="desc">  
-                                <span class="title">衣物除螨除菌液1L/3L</span>
-                                <span class="price">￥699</span>
-                            </div>
-                            <span class="hint">新品尝鲜价</span>
-                    </li>
-                    <li class="item">
-                            <div class="img">
-                                    <img src="https://yanxuan-item.nosdn.127.net/e277aa8352b720eab2f6afae5dcabcc1.png?imageView&amp;quality=65&amp;thumbnail=330x330"/>
-                            </div>
-                            <div class="desc">  
-                                <span class="title">衣物除螨除菌液1L/3L</span>
-                                <span class="price">￥699</span>
-                            </div>
-                    </li>
-                    <li class="item">
-                            <div class="img">
-                                    <img src="https://yanxuan-item.nosdn.127.net/e277aa8352b720eab2f6afae5dcabcc1.png?imageView&amp;quality=65&amp;thumbnail=330x330"/>
-                            </div>
-                            <div class="desc">  
-                                <span class="title">衣物除螨除菌液1L/3L</span>
-                                <span class="price">￥699</span>
-                            </div>
-                    </li>
-                    <li class="item">
-                            <div class="img">
-                                    <img src="https://yanxuan-item.nosdn.127.net/e277aa8352b720eab2f6afae5dcabcc1.png?imageView&amp;quality=65&amp;thumbnail=330x330"/>
-                            </div>
-                            <div class="desc">  
-                                <span class="title">衣物除螨除菌液1L/3L</span>
-                                <span class="price">￥699</span>
-                            </div>
-                    </li>
-                    <li class="item">
-                            <div class="img">
-                                    <img src="https://yanxuan-item.nosdn.127.net/e277aa8352b720eab2f6afae5dcabcc1.png?imageView&amp;quality=65&amp;thumbnail=330x330"/>
-                            </div>
-                            <div class="desc">  
-                                <span class="title">衣物除螨除菌液1L/3L</span>
-                                <span class="price">￥699</span>
-                            </div>
-                    </li>
-                    <li class="item">
-                            <div class="img">
-                                    <img src="https://yanxuan-item.nosdn.127.net/e277aa8352b720eab2f6afae5dcabcc1.png?imageView&amp;quality=65&amp;thumbnail=330x330"/>
-                            </div>
-                            <div class="desc">  
-                                <span class="title">衣物除螨除菌液1L/3L</span>
-                                <span class="price">￥699</span>
+                                <span class="title">{{item.simpleDesc}}</span>
+                                <span class="price">￥{{item.retailPrice}}</span>
+                                <span class="hint" v-for="(tag, i) in item.itemTagList" :key="i">{{tag.name}}</span>
                             </div>
                     </li>
                 </ul>
@@ -66,9 +21,25 @@
 
 <script>
 import Container1 from './HomeContainer1'
+import { mapState } from 'vuex'
 export default {
+    data() {
+        return {
+            itemList:[]
+        }
+    },
     components:{
         Container1
+    },
+    computed: {
+        ...mapState({
+          newItemList:state=>state.home.homeData.newItemList  
+        })
+    },
+    watch:{
+        newItemList(value){
+            this.itemList=value.filter((item,index)=>index<6)
+        }
     }
 }
 </script>
@@ -82,7 +53,6 @@ export default {
         flex-flow: wrap;
         justify-content: space-between;
         .item{
-            height: 169px;
             width: 108px;
             margin-bottom: 9px;
             .img{
@@ -103,7 +73,8 @@ export default {
                 }
             }
             .hint{
-              .hint()
+              .hint();
+              margin-left: 2px;
             }
         }
     }

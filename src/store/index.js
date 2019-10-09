@@ -6,7 +6,9 @@ import mutations from './mutations'
 import actions from './actions'
 import getters from './getters'
 import home from './modules/home'
-export default new Vuex({
+
+
+ export default new Vuex.Store({
     state,
     mutations,
     actions,

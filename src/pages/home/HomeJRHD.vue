@@ -1,102 +1,68 @@
 // 节日活动
 <template>
-    <div class="container2 xinhuodaowei">
-        <div class="container2-img">
-            <img src="https://yanxuan.nosdn.127.net/1a9dbabea1338bef2bc17d333009c7ff.jpg?imageView&thumbnail=750x0&quality=75">
+    <div>
+        <div class="container2 xinhuodaowei" v-for="(data, dindex) in dataList" :key="dindex">
+            <div class="container2-img">
+                <img :src="data.titlePicUrl">
+            </div>
+            <div class="scroll-wrapper" ref="list">
+                <ul class="list">
+                    <li class="item"  v-for="(item, index) in data.itemList" :key="index">
+                        <div class="img">
+                            <img :src="item.listPicUrl">
+                        </div>
+                        <div class="desc">
+                            <div class="text">
+                                {{item.simpleDesc}}
+                            </div>
+                            <div class="price">
+                                ￥{{item.retailPrice}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="list">
-            <li class="item">
-                <div class="img">
-                    <img src="https://yanxuan-item.nosdn.127.net/58e7ef289596f73c597459fd69f26b5f.png?imageView&amp;quality=65&amp;thumbnail=330x330">
-                    <span class="color">
-                            4色可选
-                    </span>
-                </div>
-                <div class="desc">
-                    <div class="text">
-                        <span class="t1">秋冬上新</span><span class="t2">男式基础合体直筒休闲裤</span>
-                    </div>
-                    <div class="price">
-                        ￥99.9
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="img">
-                    <img src="https://yanxuan-item.nosdn.127.net/58e7ef289596f73c597459fd69f26b5f.png?imageView&amp;quality=65&amp;thumbnail=330x330">
-                    <span class="color">
-                            4色可选
-                    </span>
-                </div>
-                <div class="desc">
-                    <div class="text">
-                        <span class="t1">秋冬上新</span><span class="t2">男式基础合体直筒休闲裤</span>
-                    </div>
-                    <div class="price">
-                        ￥99.9
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="img">
-                    <img src="https://yanxuan-item.nosdn.127.net/58e7ef289596f73c597459fd69f26b5f.png?imageView&amp;quality=65&amp;thumbnail=330x330">
-                    <span class="color">
-                            4色可选
-                    </span>
-                </div>
-                <div class="desc">
-                    <div class="text">
-                        <span class="t1">秋冬上新</span><span class="t2">男式基础合体直筒休闲裤</span>
-                    </div>
-                    <div class="price">
-                        ￥99.9
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="img">
-                    <img src="https://yanxuan-item.nosdn.127.net/58e7ef289596f73c597459fd69f26b5f.png?imageView&amp;quality=65&amp;thumbnail=330x330">
-                    <span class="color">
-                            4色可选
-                    </span>
-                </div>
-                <div class="desc">
-                    <div class="text">
-                        <span class="t1">秋冬上新</span><span class="t2">男式基础合体直筒休闲裤</span>
-                    </div>
-                    <div class="price">
-                        ￥99.9
-                    </div>
-                </div>
-            </li>
-            <li class="item">
-                <div class="img">
-                    <img src="https://yanxuan-item.nosdn.127.net/58e7ef289596f73c597459fd69f26b5f.png?imageView&amp;quality=65&amp;thumbnail=330x330">
-                    <span class="color">
-                            4色可选
-                    </span>
-                </div>
-                <div class="desc">
-                    <div class="text">
-                        <span class="t1">秋冬上新</span><span class="t2">男式基础合体直筒休闲裤</span>
-                    </div>
-                    <div class="price">
-                        ￥99.9
-                    </div>
-                </div>
-            </li>
-        </ul>
     </div>
+
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import BScroll from '@better-scroll/core'
 export default {
-
+    data() {
+        return {
+            dataList:[]
+        }
+    },
+    computed: {
+        ...mapState({
+            categoryModule:state=>state.home.homeData.categoryModule
+        })
+    },
+    watch:{
+        categoryModule(value){
+            this.dataList= value
+            this.$nextTick(()=>{
+                const liNodes =this.$refs.list
+                liNodes.forEach(li=>{
+                    new BScroll(li,{
+                        scrollX: true,
+                        click:true,
+                    })
+                })
+            })
+        }
+    }
 }
 </script>
 
 <style lang="less" scoped>
 @import '../../assets/mixins.less';
+.scroll-wrapper{
+    display: flex;
+}
 .container2{
     margin-bottom: 21px;
     .color{   //4款颜色....

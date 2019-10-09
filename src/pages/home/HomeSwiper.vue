@@ -35,7 +35,7 @@ export default {
     img{
         height: 185px;
     }
-    .swiper-pagination-bullet {
+    /deep/.swiper-pagination-bullet {
         border-radius: 0px;
         width: 20px;
         height: 2px;

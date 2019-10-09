@@ -5,68 +5,24 @@
                     <div class="desc">
                          <div>限时购</div>
                         <div class="time">
-                            <span class="time-item">01</span>&nbsp;:&nbsp;
-                            <span class="time-item">54</span>&nbsp;:&nbsp;
-                            <span class="time-item">08</span>
+                            <span class="time-item">{{nextStartTime.hours}}</span>&nbsp;:&nbsp;
+                            <span class="time-item">{{nextStartTime.minutes}}</span>&nbsp;:&nbsp;
+                            <span class="time-item">{{nextStartTime.seconds}}</span>
                         </div>    
                     </div>
             </div>
             <div class="xianshigou" >
                 <ul class="list">
-                    <li class="item">
+                    <li class="item" v-for="(item, index) in itemList" :key="index">
                         <div class="img">
-                                <img src="https://yanxuan-item.nosdn.127.net/ac05fbe6a867f154f6c326d288fa0400.png?imageView&amp;thumbnail=216x216&amp;quality=75">
+                                <img :src="item.picUrl">
                         </div>
                         <div class="price">
-                            <div class="now">159￥</div>
-                            <div class="old">209￥</div>
+                            <div class="now">{{item.activityPrice}}￥</div>
+                            <div class="old">{{item.originPrice}}￥</div>
                         </div>
                     </li>
-                    <li class="item">
-                        <div class="img">
-                                <img src="https://yanxuan-item.nosdn.127.net/ac05fbe6a867f154f6c326d288fa0400.png?imageView&amp;thumbnail=216x216&amp;quality=75">
-                        </div>
-                        <div class="price">
-                            <span class="now">159￥</span>
-                            <span class="old">209￥</span>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="img">
-                                <img src="https://yanxuan-item.nosdn.127.net/ac05fbe6a867f154f6c326d288fa0400.png?imageView&amp;thumbnail=216x216&amp;quality=75">
-                        </div>
-                        <div class="price">
-                            <div class="now">159￥</div>
-                            <div class="old">209￥</div>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="img">
-                                <img src="https://yanxuan-item.nosdn.127.net/ac05fbe6a867f154f6c326d288fa0400.png?imageView&amp;thumbnail=216x216&amp;quality=75">
-                        </div>
-                        <div class="price">
-                            <div class="now">159￥</div>
-                            <div class="old">209￥</div>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="img">
-                                <img src="https://yanxuan-item.nosdn.127.net/ac05fbe6a867f154f6c326d288fa0400.png?imageView&amp;thumbnail=216x216&amp;quality=75">
-                        </div>
-                        <div class="price">
-                            <div class="now">159￥</div>
-                            <div class="old">209￥</div>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="img">
-                                <img src="https://yanxuan-item.nosdn.127.net/ac05fbe6a867f154f6c326d288fa0400.png?imageView&amp;thumbnail=216x216&amp;quality=75">
-                        </div>
-                        <div class="price">
-                            <div class="now">159￥</div>
-                            <div class="old">209￥</div>
-                        </div>
-                    </li>
+                  
                 </ul>
             </div>
         </Container1> <!--end 限时购-->
@@ -74,10 +30,47 @@
 </template>
 
 <script>
+// flashSaleModule
 import Container1 from './HomeContainer1'
+import {mapState} from 'vuex'
+import dayjs from 'dayjs'
+ 
 export default {
+    mounted() {
+        setInterval(()=>{
+            this.now = new Date().valueOf()
+        },1000)
+    },
     components:{
         Container1
+    },
+    data() {
+        return {
+            now:new Date().valueOf(),
+            itemList:[]
+        }
+    },
+    computed: {
+        ...mapState({
+            flashSaleModule:state=>state.home.homeData.flashSaleModule
+        }),
+        nextStartTime(){
+            const nextStartTime = this.flashSaleModule &&this.flashSaleModule.nextStartTime
+            const diff = dayjs(nextStartTime).diff(this.now)
+            const seconds =Math.floor( (diff/1000) )%60
+            const minutes = Math.floor((diff/1000/60)) %60
+            const hours  = Math.floor((diff/1000/60/60))
+            return {
+                seconds,
+                minutes,
+                hours
+            }
+        },
+    },
+    watch:{
+        flashSaleModule(value){
+            this.itemList = value.itemList
+        }
     }
 }
 </script>

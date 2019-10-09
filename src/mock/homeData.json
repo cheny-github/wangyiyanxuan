@@ -642,7 +642,7 @@
   "flashSaleModule": {
     "activityPrice": 289,
     "primaryPicUrl": "http://yanxuan.nosdn.127.net/ff90462e4d7c7edd01a25f8932e1800f.png",
-    "nextStartTime": 1545976800000,
+    "nextStartTime": 1570619941303,
     "itemList": [
       {
         "itemId": 1644003,
@@ -734,7 +734,7 @@
       "resourcesId": 0,
       "name": "严选X颐和园 联名款2019年历本",
       "productPlace": "",
-      "counterPrice": 58,
+      "counterPrice": 58, 
       "couponPrice": 0,
       "retailPrice": 58,
       "status": 2

@@ -8,45 +8,12 @@
             </div>
             <!-- 分类 -->
             <ul class="category-list">
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
-                </li>
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
-                </li>
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
-                </li>
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
-                </li>
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
-                </li>
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
-                </li>
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
-                </li>
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
-                </li>
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
-                </li>
-                <li class="category-item">
-                        <img class="img" src="http://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" data-reactid=".0.4.0.0.0.0.$0/=1$0.$0.0.0">
-                    <span>新品首发</span>
+                <li class="category-item" 
+                v-for="(category, index) in categoryList" :key="index">
+                        <img class="img" :src="category.picUrl" >
+                    <span :style="{color:'#'+category.textColor}">
+                        {{category.text}}
+                    </span>
                 </li>
             </ul>
         </div> <!--end 商品分类-->
@@ -54,8 +21,23 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 export default {
-
+    computed:{
+        ...mapState({
+            kingKongModule:state=>state.home.homeData.kingKongModule
+        })
+    },
+    data() {
+        return {
+            categoryList:[]
+        }
+    },
+    watch:{
+        kingKongModule(value){
+            this.categoryList = value.kingKongList
+        }
+    }
 }
 </script>
 
