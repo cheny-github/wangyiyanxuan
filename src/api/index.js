@@ -5,3 +5,7 @@ export function reqHomeData() {
         url:'/homedata'
     })
 }
+
+export function reqCategoryList(){
+    return ajax.get('/categorylist')
+}

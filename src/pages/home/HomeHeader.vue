@@ -2,11 +2,7 @@
   <div class="head-wrapper">
     <div class="search-bar">
       <div class="log">网易严选</div>
-      <div class="search-wrapper">
-        <span>
-          <i class="iconfont iconsousuo"></i> 搜索商品，共2222款好物
-        </span>
-      </div>
+        <Search></Search>
       <div class="loggin">登录</div>
     </div>
     <!--end search-bar-->
@@ -46,6 +42,7 @@
 <script>
 import BScroll from "@better-scroll/core";
 import { getWidthByChildren } from "../../utils/index";
+import Search from 'components/search/Search';
 export default {
   mounted() {
     // 由于navList是flex容器，不能由子元素撑开，所以需要单独计算navList的宽度以满足滑动的要求
@@ -56,6 +53,9 @@ export default {
       click: true,
       probeType: 3 // listening scroll hook
     });
+  },
+  components:{
+      Search
   },
   data() {
     return {
@@ -95,17 +95,7 @@ export default {
     .log {
       font-size: 16px;
     }
-    // 搜索
-    .search-wrapper {
-      width: 221px;
-      height: 28px;
-      margin: 0 9px;
-      background-color: #ededed;
-      line-height: 28px;
-      text-indent: 22px;
-      font-size: 14px; //fz
-      color: #aaaaaa;
-    }
+
     .loggin {
       height: 18px;
       line-height: 18px;

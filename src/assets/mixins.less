@@ -40,3 +40,43 @@
     padding: 2px 4px;
     color: #ce2424;
 }
+
+// 1物理像素边框
+.border-1px-bottom(){
+    &::after{
+        content: ' ';
+        display: block;
+        position: relative;
+        width: 100%;
+        height:  3px;
+        bottom: -1px;
+        background-color: #ccc;
+        @media (-webkit-min-device-pixel-ratio:2) {
+            transform: scaleY(.5);
+        }
+
+
+    }
+}
+
+.border-1px-top(){
+    &::after{
+        content: ' ';
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 3px;
+        top: -1px;
+        background-color: #ccc;
+        @media (-webkit-min-device-pixel-ratio:2) {
+            transform: scaleY(.5);
+        }
+
+    }
+}
+
+// @media (-webkit-min-device-pixel-ratio: 2) {
+//     body{
+//         background-color: #f90;
+//     }
+// }

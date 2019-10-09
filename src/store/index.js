@@ -6,7 +6,7 @@ import mutations from './mutations'
 import actions from './actions'
 import getters from './getters'
 import home from './modules/home'
-
+import category from './modules/category'
 
  export default new Vuex.Store({
     state,
@@ -14,6 +14,7 @@ import home from './modules/home'
     actions,
     getters,
     modules:{
-        home        
+        home,
+        category        
     }
 })
