@@ -1,31 +1,74 @@
 <template>
-  <div class="wrapper">
+  <div>
+    <div class="wrapper">
       <div class="avatar">
-          <img src="https://yanxuan.nosdn.127.net/4c98da83cc32987e48f7d1b0da46a307.jpg?imageView&amp;quality=65&amp;thumbnail=56y56" alt="" width="100%" height="100%">
-          <div class="username">
-              Lorem, ipsum dolor.
-          </div>
+        <img
+          :src="topic.avatar"
+          alt
+        />
+        <div class="username">{{topic.nickname}}</div>
       </div>
-      <div class="title">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, error.
-      </div>
+      <div class="title">{{topic.title}}</div>
       <div class="img">
-      <img src="https://yanxuan.nosdn.127.net/9b83d46a01159e7a42d97598dc442172.jpg?imageView&amp;quality=65&amp;thumbnail=690y376" alt="">
+        <img
+          :src="topic.picUrl"
+          alt
+        />
       </div>
-    <div class="view">
-        <i class="iconfont  iconliulan"></i> 123.3K人看过
+      <ViewCount class="viewcount" :count="topic.readCount"></ViewCount>
+    </div>
+    <div class="seprator">
+
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import ViewCount from "./ViewCount";
 
-}
+export default {
+  props:['topic'],
+  components: {
+    ViewCount
+  }
+};
 </script>
 
 <style lang="less" scoped>
-    .wrapper{
-        padding: 15px;
+.seprator{
+    height: 10px;
+    width: 100vw;
+    background-color: #f4f4f4;
+}
+.viewcount{
+    bottom: 5px;
+}
+.wrapper {
+  padding: 15px;
+  position: relative;
+  .avatar {
+    margin-bottom: 14px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      margin-right: 6px;
     }
+  }
+  .title {
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .img {
+    img {
+      width: 100%;
+      border-radius: 3px;
+    }
+    margin-bottom: 12px;
+    margin-top: 6px;
+  }
+}
 </style>

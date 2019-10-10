@@ -1,4 +1,4 @@
-import {reqCategoryList} from '../../api/index'
+import api from '../../api'
 
 const CATEGORY_LIST = 'category list'
 
@@ -16,7 +16,7 @@ const mutations={
 
 const actions={
     async fetchCategoryList({commit}){
-        const result = await reqCategoryList()
+        const result = await api.service.reqCategoryList()
         if (result.status ===0) {
             commit(CATEGORY_LIST,result.data)
         }

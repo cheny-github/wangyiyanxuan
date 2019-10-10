@@ -1,4 +1,4 @@
-import {reqHomeData} from '../../api/index'
+import api from '../../api'
 
 const HOME_DATA = 'update homeData'
 
@@ -16,7 +16,7 @@ const mutations={
 
 const actions={
     async fetchHomeData({commit}){
-        const result = await reqHomeData()
+        const result = await api.service.reqHomeData()
         if (result.status ===0) {
             commit(HOME_DATA,result.data)
         }

@@ -47,7 +47,7 @@ export default {
     },
     methods:{
         navTo(index,path){
-            if (path === this.$route.path) {
+            if (this.$route.path.includes(path)) {
                 return
             }
             this.activeIndex =index
@@ -55,7 +55,12 @@ export default {
         }
     },
     beforeMount(){
-        this.activeIndex = pathMap[this.$route.path]
+      Object.keys(pathMap).forEach(key=>{
+        if (this.$route.path.includes(key)) {
+            this.activeIndex = pathMap[key]
+        }
+      })
+    
     },
 
 };

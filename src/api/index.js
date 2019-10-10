@@ -1,11 +1,7 @@
-import ajax from './ajax'
+import service from './service'
+import wangyi from './wangyi'
 
-export function reqHomeData() {
-    return ajax({
-        url:'/homedata'
-    })
-}
-
-export function reqCategoryList(){
-    return ajax.get('/categorylist')
+export default{
+    service,
+    wangyi
 }

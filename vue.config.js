@@ -14,11 +14,16 @@ module.exports = {
   },
   devServer: {
     proxy: {
+      "/wangyi":{
+        target: "http://m.you.163.com",
+        pathRewrite: { "^/wangyi": "" },
+        changeOrigin: true
+      },
       "/api": {
         target: "http://localhost:4000",
         pathRewrite: { "^/api": "" },
         changeOrigin: true
-      }
+      },
     }
   },
   /* 编写webpack支持的配置 */

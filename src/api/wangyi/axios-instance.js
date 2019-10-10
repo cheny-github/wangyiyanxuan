@@ -1,11 +1,11 @@
 import axios from 'axios'
 const ajax = axios.create()
 
-ajax.defaults.baseURL="/api"
+ajax.defaults.baseURL="/wangyi"
+
 
 
 ajax.interceptors.request.use(config=>{
-
     return config;
 })
 
@@ -17,5 +17,7 @@ ajax.interceptors.response.use(
         alert('出错了',error)
     }
 )
+
+
 
 export default ajax
