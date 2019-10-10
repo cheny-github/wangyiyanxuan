@@ -30,7 +30,7 @@
       </div>
     </header>
     <div class="content">
-      <router-view></router-view>
+      <router-view :setHeadActiveIndex="setHeadActiveIndex"></router-view>
     </div>
   </div>
 </template>
@@ -60,6 +60,10 @@ export default {
       }
     },
     methods:{
+      setHeadActiveIndex(index){
+        this.HeadActiveIndex = index
+      }
+      ,
       navTo(path,index){
         if (path === this.$route.path) {
             return 
@@ -67,6 +71,11 @@ export default {
         this.$router.replace(path)
         this.HeadActiveIndex=index
       }
+    },
+    beforeRouteEnter(to,from,next)
+    {
+      console.log('enter')
+      next()
     }
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
     <div class="wrapper">
         <header class="header">
+            <span></span>
             <span class="hint">购物车</span>
             <div class="lingquan">领券</div>
         </header>
@@ -19,6 +20,7 @@
             <!-- 购物车 -->
             <div class="gouwuche">
                 <img  class="" src="https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-a8fe3f12e5.png" alt="ShopCar">
+                <p class="hint">去添加点什么吧</p>
             </div>
             <button class="btn-login">登录</button>
         </div>
@@ -32,5 +34,54 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-
+    .wrapper{
+        padding-bottom: 51px;
+        .header{
+            height: 44px;
+            display: flex;
+            padding: 0 30px;
+            justify-content: space-between;
+            align-items: center;
+            .hint{
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .lingquan{
+                font-size: 15px;
+                color: #b4282d;
+            }
+           
+        }
+        .content{
+            background-color: #f4f4f4;
+            border-top: 1px solid transparent;
+            height: 510px;
+            position: relative;
+            .service{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 18px;
+                padding: 0 25px;
+                font-size: 12px;
+                color: #6e6e6e;
+            }
+            .gouwuche{
+                height: 90px;
+                width: 113px;
+                position: absolute;
+                left: 125px;
+                bottom: 240px;
+                .hint{
+                    text-align: center;
+                    margin-top: 21px;
+                    font-size: 12px;
+                    color: #aaa;
+                }
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
 </style>

@@ -1,7 +1,7 @@
 
 export default (apiConfig,axiosInstance)=>{
     return Object.keys(apiConfig).reduce((pre,key)=>{
-        let {url,method ='get',corsUrl,isForm=false,withToken=false} = apiConfig[key]
+        let {url,method ='get',corsUrl,isForm=false,withToken=false,defaultParams={}} = apiConfig[key]
         method = method.toLowerCase()
         if (corsUrl) {
             url+= corsUrl
@@ -10,7 +10,7 @@ export default (apiConfig,axiosInstance)=>{
             // 合并配置
             let options ={url ,method,headers:{withToken}}
             if (method === "get" || method === "delte" ) {
-                options={...options,...{params:data },...config}
+                options={...options,...{params:{...defaultParams,...data} },...config}
             }else{
                 options ={...options,data,...config}
                 if (isForm) {
