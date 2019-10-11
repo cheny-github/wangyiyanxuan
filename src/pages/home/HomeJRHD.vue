@@ -5,7 +5,7 @@
             <div class="container2-img">
                 <img :src="data.titlePicUrl">
             </div>
-            <div class="scroll-wrapper" ref="list">
+            <div class="scroll-wrapper"  v-scrollx>
                 <ul class="list">
                     <li class="item"  v-for="(item, index) in data.itemList" :key="index">
                         <div class="img">
@@ -29,7 +29,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import BScroll from '@better-scroll/core'
 export default {
     data() {
         return {
@@ -44,15 +43,6 @@ export default {
     watch:{
         categoryModule(value){
             this.dataList= value
-            this.$nextTick(()=>{
-                const liNodes =this.$refs.list
-                liNodes.forEach(li=>{
-                    new BScroll(li,{
-                        scrollX: true,
-                        click:true,
-                    })
-                })
-            })
         }
     }
 }

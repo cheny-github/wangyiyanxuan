@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer">
+    <footer class="footer"         v-if="showFooter">
       <div class="nav-item" :class="{active:activeIndex===0}"
        @click="navTo(0,'/')">
         <i class="iconfont iconshouye"></i>
@@ -42,25 +42,36 @@ const pathMap={
 export default {
     data() {
         return {
-        activeIndex: 0
+        activeIndex: 0,
+        showFooter:true
         };
     },
     methods:{
         navTo(index,path){
-            if (this.$route.path.includes(path)) {
+            if ((this.$route.path.includes(path) && path !== '/') || (this.$route.path === path && path === "/")) {
                 return
             }
             this.activeIndex =index
             this.$router.replace(path)
         }
     },
-    beforeMount(){
+    mounted(){
       Object.keys(pathMap).forEach(key=>{
         if (this.$route.path.includes(key)) {
             this.activeIndex = pathMap[key]
         }
       })
-    
+      this.$bus.$on('setFooterIndex',(index)=>{
+        this.activeIndex = index
+      })
+      this.$bus.$on('showFooter',(flag)=>{
+        this.showFooter = flag
+      })
+    },
+    computed:{
+      path(){
+        return this.$route.path
+      }
     },
 
 };

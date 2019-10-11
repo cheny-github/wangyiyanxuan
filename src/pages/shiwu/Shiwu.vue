@@ -74,7 +74,6 @@ export default {
     },
     beforeRouteEnter(to,from,next)
     {
-      console.log('enter')
       next()
     }
 };

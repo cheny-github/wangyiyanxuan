@@ -31,7 +31,7 @@
             <!-- 列表类容 -->
             <ul class="detail-list">
               <li class="detail-item" v-for="(item, index) in categoryL2List" :key="index">
-                <img :src="item.bannerUrl" class="cateImg" data-reactid=".0.1.1.0.0.1:$categroup0.1.$subCate_1.0.0.0">
+                <img :src="item.bannerUrl" class="cateImg">
                 <p>{{item.name}}</p>
               </li>
             </ul>

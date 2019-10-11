@@ -50,7 +50,7 @@
             </div>
             <!-- 第三页 -->
             <div class="desc" v-if="type ===3" style="text-align:center;    line-height: 23px;">
-              <div class="title" style="color:#333;">{{comment.collection.title}}</div>
+              <div class="title" style="color:#333;">{{comment.collection&&comment.collection.title}}</div>
               <div class="subtitle">{{comment.collection.subtitle}}</div>
             </div>
           </li>
@@ -87,6 +87,7 @@ export default {
         document.documentElement.clientHeight +
         document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
+      // 滚动到底部了
       if (scrollHeight - scrollTop < 200) {
         // console.log('good')
         const result = await reqList({

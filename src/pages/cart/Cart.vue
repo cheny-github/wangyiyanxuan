@@ -82,6 +82,19 @@ export default {
                     height: 100%;
                 }
             }
+            .btn-login{
+                height: 46px;
+                border: 1px solid #ccc;
+                width: 240px;
+                background-color: #b4282d;
+                font-size: 16px;
+                color: #fff;
+                text-align: center;
+                line-height: 46px;
+                position: absolute;
+                left: 69px;
+                bottom: 78px;
+            }
         }
     }
 </style>
