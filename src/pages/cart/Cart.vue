@@ -19,7 +19,7 @@
             </ul>
             <!-- 购物车 -->
             <div class="gouwuche">
-                <img  class="" src="https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-a8fe3f12e5.png" alt="ShopCar">
+                <img   v-lazy="'https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-a8fe3f12e5.png'" alt="ShopCar">
                 <p class="hint">去添加点什么吧</p>
             </div>
             <button class="btn-login">登录</button>

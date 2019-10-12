@@ -9,7 +9,7 @@
                 <ul class="list">
                     <li class="item"  v-for="(item, index) in data.itemList" :key="index">
                         <div class="img">
-                            <img :src="item.listPicUrl">
+                            <img v-lazy="item.listPicUrl">
                         </div>
                         <div class="desc">
                             <div class="text">

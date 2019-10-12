@@ -9,9 +9,7 @@
           <li class="mengwu-item" v-for="(mengwu, index) in mengWuList" :key="index">
             <img
               data-v-414248e1
-              :src="mengwu.banner.picUrl"
-              data-src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg"
-              lazy="loaded"
+              v-lazy="mengwu.banner.picUrl"
             />
           </li>
         </ul>
@@ -33,14 +31,14 @@
             <img
               class="mian-img"
               data-v-7131983a
-              :src="comment.bannerInfo.picUrl"
+              v-lazy="comment.bannerInfo.picUrl"
               alt="New"
               lazy="loaded"
             />
             <div class="desc" v-if="type !==3">{{comment.content}}</div>
             <div class="like" v-if="type !==3">
               <div class="avatar">
-                <img data-v-7131983a :src="comment.avatar" alt="avatar" lazy="loaded" />
+                <img data-v-7131983a v-lazy="comment.avatar" alt="avatar" lazy="loaded" />
                 <div class="username">{{comment.nickName}}</div>
               </div>
               <div class="count">

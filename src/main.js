@@ -7,9 +7,17 @@ import "lib-flexible/flexible";
 import api from "./api";
 import BScroll from "@better-scroll/core";
 import "animate.css";
+import VueLazyload  from 'vue-lazyload'
 Vue.prototype.$api = api;
 Vue.prototype.$bus = new Vue();
 Vue.config.productionTip = false;
+
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: '/error.png',
+  loading: '/loading.gif',
+  attempt: 1
+})
 // betterScroll
 Vue.directive("scrollx", {
   inserted: function(el) {
