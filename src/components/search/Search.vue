@@ -1,5 +1,5 @@
 <template>
-    <div class="search-wrapper" :style="{width}">
+    <div class="search-wrapper" :style="{width}" @click="$router.push('/search')">
         <span>
           <i class="iconfont iconsousuo"></i> 搜索商品，共2222款好物
         </span>

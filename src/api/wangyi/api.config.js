@@ -21,6 +21,17 @@ export default {
     // reqCollection({id})
     reqCollection:{
         url:'/topic/v1/look/getCollection.json'
+    },
+    // reqSearch({keywordPrefix:xxx})
+    reqSearch:{
+        url:'/xhr/search/searchAutoComplete.json',
+        method:'post',
+        isForm:true
+    },
+    // reqInitSearch()
+    reqInitSearch:{
+        url:'/xhr/search/init.json',
+        method:'post'
     }
 }
 

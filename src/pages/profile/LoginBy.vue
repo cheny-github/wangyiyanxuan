@@ -41,9 +41,9 @@
     </form>
     <BtnGroup
       ref="btn"
-      v-on:primary-click="handleBtnPrimaryClick"
-      :btnContent="btnContent"
+      @primary-click="handleBtnPrimaryClick"
       @default-click="handleBtnDefaultClick"
+      :btnContent="btnContent"
     ></BtnGroup>
   </div>
 </template>

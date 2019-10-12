@@ -71,7 +71,7 @@ export default new Router(
                 ]
             },
             {
-                path:'/sarch',
+                path:'/search',
                 component:()=>import('pages/search/Search')
             }             
         ]
